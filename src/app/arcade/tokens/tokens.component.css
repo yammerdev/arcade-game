@@ -1,0 +1,18 @@
+.tokens-wrapper {
+    background-color: gray;
+    max-width: 100%;
+    border-radius: 25px;
+    padding: 25px;
+    flex: 1 0 50%;
+}
+
+.token-input {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+:host {
+    flex: 1 0 50%;
+    margin: 0px 10px;
+}
