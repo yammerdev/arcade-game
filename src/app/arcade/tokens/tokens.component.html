@@ -4,7 +4,7 @@
     <form class="token-input">
         <label class="label" style="padding-bottom: 5px">Amount</label>
         <input (input)="onFieldChange($event)" placeholder="Enter token amount" type="text" #tokenInput>
-        <label *ngIf="tokenFieldValue" class="label" style="padding-top: 5px">Cost: ${{ tokenFieldValue }} (@.25/token)</label>
+        <label *ngIf="tokenFieldCost" class="label" style="padding-top: 5px">Cost: ${{ tokenFieldCost }} (@.25/token)</label>
     </form>
     <button class="token-button" (click)="purchaseTokens(tokenInput.value)">Buy Tokens</button>
 </div>

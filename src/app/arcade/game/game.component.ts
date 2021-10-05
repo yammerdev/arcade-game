@@ -8,33 +8,45 @@ import { Game } from '../arcade.component';
 })
 export class GameComponent implements OnInit {
 
+  //The selected game
   @Input() currentGame: Game | undefined;
+
+  //Users token balance
   @Input() tokenBalance: number | undefined;
+
+  //Output to emit game event
   @Output() playGameEvent = new EventEmitter<Game>();
 
-  showErrorModal: boolean
+  // If the user has enough tokens to play the game
+  public canPlayGame: boolean
 
   constructor() { 
-    this.showErrorModal = false
+    this.canPlayGame = false
   }
 
-  ngOnInit(): void {
-    console.log(this.currentGame)
-  }
+  ngOnInit(): void { }
 
+  /**
+   * Whenever tokenBalance or currentGame changes, recheck the balance to validate if the user has enough tokens to play
+   */
   ngOnChanges(): void {
     this.checkBalance()
   }
 
+  /**
+   * Check if the user has the balance to play the game
+   */
   checkBalance(): void {
     if (this.tokenBalance != undefined && this.currentGame != undefined){
-        this.showErrorModal = this.tokenBalance < this.currentGame.cost
-        console.log(this.showErrorModal)
+        this.canPlayGame = this.tokenBalance < this.currentGame.cost
     }
   }
 
+  /**
+   * Emit the play game event to arcade if the user can play
+   */
   playGame() {
-    if (!this.showErrorModal){
+    if (!this.canPlayGame){
       this.playGameEvent.emit(this.currentGame)
     }
     

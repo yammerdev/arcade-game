@@ -7,11 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LedgerComponent implements OnInit {
 
+  // The transaction ledger which is rendered into the dom
   @Input() transactionHistory: string[] | undefined
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -9,6 +9,7 @@ import { GameComponent } from './game/game.component';
 
 export class ArcadeComponent implements OnInit {
 
+  // Constant array of example games
   private GAME_LIST: Game[] = [
     {
       name: 'Pac-Man', 
@@ -32,11 +33,14 @@ export class ArcadeComponent implements OnInit {
     }
   ]
 
-  @Output() someEvent = new EventEmitter();
-
+  // The selected game
   public currentGame: Game | undefined
+
+  // The ledger which holds all recorded transactions
   public transactionHistory : string[]
-  tokenBalance: number = 10
+
+  //The users token balance
+  public tokenBalance: number = 10
 
   constructor() {
     this.transactionHistory = []
@@ -45,33 +49,48 @@ export class ArcadeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Update the current game by finding the matching game in the game list
+   * 
+   * @param event DOM event object containing the selected game option
+   */
   changeGame(event: any): void {
     this.currentGame = this.GAME_LIST.find(game => game.name == event.target.value) || this.GAME_LIST[0]
-    console.log(this.currentGame)
   }
 
+  /**
+   * Deduct tokens necessary to play the game and add a log of the game to the ledger
+   * 
+   * @param game The game to be play
+   */
   playGame(game: Game): void { 
     this.tokenBalance -= game.cost
     this.transactionHistory.push(`Play Game: ${game.name} Cost: ${game.cost}`)
   }
 
+  /**
+   * Add tokens to the current balance and add a log of the transaction to the ledger
+   * 
+   * @param transaction the purchase transaction containing
+   */
   addTokens(transaction: Transaction){
-    console.log(transaction)
     this.tokenBalance += transaction.tokens
-    this.transactionHistory.push(`Purchase: ${transaction.tokens} tokens for $${transaction.cost}`)
-  }
-
-  getBalance(): number {
-    return this.tokenBalance;
+    this.transactionHistory.push(`Purchase: ${transaction.tokens} token(s) for $${transaction.cost}`)
   }
  
 }
 
+/**
+ * Information pertaining to a token purchase transaction
+ */
 export interface Transaction {
   tokens: number,
   cost: number
 }
 
+/**
+ * Information related to an available game
+ */
 export interface Game {
   name: string
   cost: number
