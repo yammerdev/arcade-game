@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ledger',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ledger.component.css']
 })
 export class LedgerComponent implements OnInit {
+
+  @Input() transactionHistory: string[] | undefined
 
   constructor() { }
 

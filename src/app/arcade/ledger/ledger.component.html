@@ -1,4 +1,7 @@
 <div class="ledger-wrapper">
     <h2>Transaction Ledger</h2>
     <p>Below is a list of your token transactions:</p>
+    <ul>
+        <li *ngFor="let transaction of transactionHistory">{{transaction}}</li>
+      </ul>
 </div>

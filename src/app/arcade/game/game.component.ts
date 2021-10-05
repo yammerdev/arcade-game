@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Game } from '../arcade.component';
 
 @Component({
   selector: 'app-game',
@@ -7,12 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  @Input() currentGame: Game | undefined;
+  @Input() tokenBalance: number | undefined;
+  @Output() playGameEvent = new EventEmitter<Game>();
+
+  showErrorModal: boolean
+
+  constructor() { 
+    this.showErrorModal = false
+  }
 
   ngOnInit(): void {
+    console.log(this.currentGame)
+  }
+
+  ngOnChanges(): void {
+    this.checkBalance()
+  }
+
+  checkBalance(): void {
+    if (this.tokenBalance != undefined && this.currentGame != undefined){
+        this.showErrorModal = this.tokenBalance < this.currentGame.cost
+        console.log(this.showErrorModal)
+    }
   }
 
   playGame() {
-    console.log("hello")
+    if (!this.showErrorModal){
+      this.playGameEvent.emit(this.currentGame)
+    }
+    
   }
 }

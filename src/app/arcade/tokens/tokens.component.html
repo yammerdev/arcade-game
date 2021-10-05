@@ -3,7 +3,7 @@
     <p>Enter the amount of tokens you'd like to purchase below and press Buy</p>
     <form class="token-input">
         <label class="label" style="padding-bottom: 5px">Amount</label>
-        <input placeholder="Enter token amount" type="text">
+        <input placeholder="Enter token amount" type="text" #tokenInput>
     </form>
-    <button class="token-button">Buy Tokens</button>
+    <button class="token-button" (click)="purchaseTokens(tokenInput.value)">Buy Tokens</button>
 </div>
