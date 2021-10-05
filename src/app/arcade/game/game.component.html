@@ -1,7 +1,7 @@
 <div class="game-wrapper">
     <h1>{{ currentGame?.name }}</h1>
     <p class="game-text">{{ currentGame?.description }}</p>
-    <p class="game-text">Cost: {{currentGame?.cost}} Tokens (.25c / each)</p>
+    <p class="game-text">Cost: {{currentGame?.cost}} Tokens</p>
     <div class="play-game-container">
         <button class="play-button" (click)="playGame()" (mouseover)="checkBalance()" (mouseleave)="showErrorModal=false">Play Game</button>
         <div class="error-modal" *ngIf="showErrorModal">You cannot afford to play this game!</div>

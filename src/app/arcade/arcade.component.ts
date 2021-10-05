@@ -17,7 +17,7 @@ export class ArcadeComponent implements OnInit {
     },
     { 
       name: 'Whack-A-Mole', 
-      cost: 1.5, 
+      cost: 2, 
       description: "Whack the most moles to win!"
     },
     { 
@@ -52,17 +52,24 @@ export class ArcadeComponent implements OnInit {
 
   playGame(game: Game): void { 
     this.tokenBalance -= game.cost
-    this.transactionHistory.push(`Game: ${game.name} Cost: ${game.cost}`)
+    this.transactionHistory.push(`Play Game: ${game.name} Cost: ${game.cost}`)
   }
 
-  addTokens(amount: number){
-    this.tokenBalance += amount
+  addTokens(transaction: Transaction){
+    console.log(transaction)
+    this.tokenBalance += transaction.tokens
+    this.transactionHistory.push(`Purchase: ${transaction.tokens} tokens for $${transaction.cost}`)
   }
 
   getBalance(): number {
     return this.tokenBalance;
   }
  
+}
+
+export interface Transaction {
+  tokens: number,
+  cost: number
 }
 
 export interface Game {
