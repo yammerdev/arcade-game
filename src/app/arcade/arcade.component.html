@@ -1,8 +1,25 @@
+<div class="nav">
+   <p>Welcome to Lightforce Arcade!</p> 
+   <div>
+        <label style="padding-right: 10px;" for="games">Select a game!</label>
+        <select name="Games" class="game-selector">
+            <option value="pac">Pac-Man</option>
+            <option value="whack">Whack-A-Mole</option>
+            <option value="mine">Minecraft</option>
+            <option value="league">League of Legends</option>
+        </select>
+   </div>
+   <p>Your Token Balance: 0 Tokens</p> 
+</div>
+
 <div class="arcade-wrapper">
-    Your Token Balance: 
     <app-game></app-game>
     <div class="bottom-wrapper">
-        <app-tokens></app-tokens>
-        <app-ledger></app-ledger>
+        <div class="content-wrapper">
+            <app-tokens></app-tokens>
+        </div>
+        <div class="content-wrapper">
+            <app-ledger></app-ledger>
+        </div>
     </div>
 </div>

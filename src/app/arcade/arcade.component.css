@@ -1,13 +1,35 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    background-color: rgb(35, 35, 128);
+    padding: 15px 25px;
+    color: white;
+    
+}
+
 .arcade-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding: 50px 20px 0px;
 }
 
 .bottom-wrapper {
     display: flex;
-    max-width: 100%;
     flex-direction: row;
-    justify-content: space-around;
-    margin-top: 100px;
+    max-width: 100%;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.content-wrapper {
+    flex-basis: 49%
+}
+
+.game-selector {
+   border-radius: 10px;
+   border: none;
+   padding: 5px;
 }

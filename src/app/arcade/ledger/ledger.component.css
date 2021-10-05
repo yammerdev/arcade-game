@@ -1,11 +1,6 @@
 .ledger-wrapper {
-    background-color: gray;
     border-radius: 25px;
     padding: 25px;
-
-}
-
-:host {
-    flex: 1 0 50%;
-    margin: 0px 10px;
+    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, .2);
+    background-color: white;
 }
